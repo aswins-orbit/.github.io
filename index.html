@@ -1,22 +1,1545 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Aswin S | Thermal Engineering</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aswin S | Thermal Engineering | IIT Madras</title>
+
+    <meta name="description"
+          content="Aswin S - M.Tech Thermal Engineering student at IIT Madras. Research interests in heat transfer, CFD, microchannel flow boiling, thermal management and advanced thermal systems.">
+
+    <meta name="author" content="Aswin S">
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #080b12;
+            --bg2: #0d111a;
+            --card: #111722;
+            --card2: #151c29;
+            --text: #f4f7fb;
+            --muted: #9ba7b8;
+            --accent: #62d9ff;
+            --accent2: #7c8cff;
+            --border: rgba(255,255,255,0.09);
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 80% 10%, rgba(98,217,255,0.10), transparent 30%),
+                radial-gradient(circle at 10% 30%, rgba(124,140,255,0.08), transparent 30%),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .section-description {
+            max-width: 720px;
+            color: var(--muted);
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,11,18,0.75);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            position: relative;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(98,217,255,0.3);
+            background: rgba(98,217,255,0.06);
+            border-radius: 30px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 8vw, 6.5rem);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.55rem);
+            color: #d6ddea;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #061018;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(98,217,255,0.18);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-card {
+            position: relative;
+            min-height: 370px;
+            border: 1px solid var(--border);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+            border-radius: 22px;
+            padding: 35px;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(98,217,255,0.12);
+            filter: blur(40px);
+            top: -80px;
+            right: -80px;
+        }
+
+        .hero-card-title {
+            color: var(--accent);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 18px;
+        }
+
+        .hero-card p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #cbd4e1;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #4ade80;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .highlight-box {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--card);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .highlight-list {
+            list-style: none;
+        }
+
+        .highlight-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            color: #cdd5e2;
+        }
+
+        .highlight-list li:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================================================
+           RESEARCH
+        ========================================================= */
+
+        .research-card {
+            border: 1px solid var(--border);
+            background:
+                linear-gradient(135deg,
+                rgba(98,217,255,0.08),
+                rgba(124,140,255,0.04)),
+                var(--card);
+            border-radius: 20px;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::after {
+            content: "RESEARCH";
+            position: absolute;
+            right: -20px;
+            top: 30px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.025);
+        }
+
+        .research-meta {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .research-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            max-width: 700px;
+        }
+
+        .research-card p {
+            color: var(--muted);
+            max-width: 800px;
+            margin-bottom: 25px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: #cbd5e1;
+            background: rgba(255,255,255,0.03);
+            font-size: 0.78rem;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: 0.35s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(98,217,255,0.35);
+        }
+
+        .project-number {
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 28px;
+            border-radius: 15px;
+        }
+
+        .skill-box h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .skill-box p {
+            color: #c4cedc;
+        }
+
+
+        /* =========================================================
+           RESEARCH INTERESTS
+        ========================================================= */
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .interest {
+            padding: 22px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-height: 120px;
+            display: flex;
+            align-items: flex-end;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .interest:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+
+        /* =========================================================
+           EDUCATION
+        ========================================================= */
+
+        .timeline {
+            border-left: 1px solid rgba(98,217,255,0.4);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -37px;
+            top: 8px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 15px rgba(98,217,255,0.5);
+        }
+
+        .timeline-year {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-card {
+            text-align: center;
+            padding: 70px 30px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at center,
+                rgba(98,217,255,0.08),
+                transparent 55%),
+                var(--card);
+        }
+
+        .contact-card h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+
+        /* =========================================================
+           ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            section {
+                padding: 75px 0;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: #090d14;
+                flex-direction: column;
+                padding: 25px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .research-card {
+                padding: 30px;
+            }
+
+        }
+
+    </style>
 </head>
 
+
 <body>
-    <h1>Aswin S</h1>
-    <h2>M.Tech Thermal Engineering | IIT Madras</h2>
 
-    <p>
-        Mechanical Engineer interested in Thermal Engineering,
-        CFD, Heat Transfer and Advanced Thermal Systems.
-    </p>
 
-    <h2>Research</h2>
-    <p>Microchannel Flow Boiling: Experiments & Simulation</p>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-    <h2>Projects</h2>
-    <p>Optimization of Heat Sink Design Through Thermal Analysis</p>
+<nav>
+
+    <div class="container nav-inner">
+
+        <a href="#home" class="logo">
+            ASWIN<span>.</span>
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="home">
+
+    <div class="container hero">
+
+        <div class="hero-content reveal">
+
+            <div class="hero-tag">
+                M.Tech Thermal Engineering • IIT Madras
+            </div>
+
+            <h1>
+                ASWIN<br>
+                <span>S.</span>
+            </h1>
+
+            <div class="hero-subtitle">
+                Thermal Engineering × CFD × Advanced Thermal Systems
+            </div>
+
+            <p class="hero-description">
+
+                Mechanical Engineer and M.Tech Thermal Engineering
+                student at IIT Madras, interested in advanced heat
+                transfer, computational fluid dynamics, thermal
+                management, and emerging thermal technologies.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#research" class="btn btn-primary">
+                    Explore Research
+                </a>
+
+                <a href="#projects" class="btn btn-secondary">
+                    View Projects
+                </a>
+
+                <a href="https://www.linkedin.com/in/aswin-s-15b21b201"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card reveal">
+
+            <div class="hero-card-title">
+                CURRENT FOCUS
+            </div>
+
+            <h3>
+                Microchannel Flow Boiling
+            </h3>
+
+            <p>
+                Experiments & Simulation
+            </p>
+
+            <p>
+                Research focused on advanced cooling,
+                two-phase flow, boiling heat transfer,
+                pressure drop and thermal management.
+            </p>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Ongoing Research
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-label">
+            01 — About
+        </div>
+
+        <h2 class="section-title">
+            Engineering with a thermal perspective.
+        </h2>
+
+        <p class="section-description">
+            My work sits at the intersection of thermal engineering,
+            computational analysis, experimentation and engineering design.
+        </p>
+
+
+        <div class="about-grid">
+
+            <div class="about-text reveal">
+
+                <p>
+                    I am a Mechanical Engineer currently pursuing an
+                    M.Tech in Thermal Engineering at the Indian Institute
+                    of Technology Madras.
+                </p>
+
+                <p>
+                    My academic background has given me experience in
+                    heat transfer, CFD, thermal analysis, engineering
+                    design, additive manufacturing and experimental
+                    thermal engineering.
+                </p>
+
+                <p>
+                    My current research focuses on microchannel flow
+                    boiling through experimental and simulation approaches,
+                    with an interest in advanced cooling technologies
+                    and high-performance thermal management.
+                </p>
+
+                <p>
+                    Looking forward, I am particularly interested in
+                    aerospace thermal systems, spacecraft thermal
+                    management, propulsion systems, battery thermal
+                    management and advanced heat-transfer technologies.
+                </p>
+
+            </div>
+
+
+            <div class="highlight-box reveal">
+
+                <h3>
+                    What I work around
+                </h3>
+
+                <ul class="highlight-list">
+
+                    <li>Thermal Engineering</li>
+                    <li>Heat Transfer</li>
+                    <li>Computational Fluid Dynamics</li>
+                    <li>Microchannel Flow Boiling</li>
+                    <li>Thermal Management</li>
+                    <li>Experimental Heat Transfer</li>
+                    <li>Advanced Manufacturing</li>
+                    <li>Aerospace Thermal Systems</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESEARCH
+========================================================= -->
+
+<section id="research">
+
+    <div class="container">
+
+        <div class="section-label">
+            02 — Research
+        </div>
+
+        <h2 class="section-title">
+            Current Research
+        </h2>
+
+        <p class="section-description">
+            An ongoing M.Tech research project at IIT Madras
+            exploring advanced two-phase thermal transport.
+        </p>
+
+
+        <div class="research-card reveal">
+
+            <div class="research-meta">
+                IIT MADRAS • M.TECH THERMAL ENGINEERING
+            </div>
+
+            <h3>
+                Microchannel Flow Boiling:
+                Experiments & Simulation
+            </h3>
+
+            <p>
+                My current research investigates flow boiling in
+                microchannels using experimental and computational
+                approaches. The work is motivated by the need for
+                compact and high-performance thermal management
+                technologies.
+            </p>
+
+            <p>
+                Areas of interest include boiling heat transfer,
+                two-phase flow behaviour, pressure drop, critical
+                heat flux and thermal performance of micro-scale
+                cooling systems.
+            </p>
+
+            <p>
+                <strong>Guide:</strong>
+                Prof. Aravind Pattamatta
+            </p>
+
+
+            <div class="tags">
+
+                <span class="tag">Microchannels</span>
+                <span class="tag">Flow Boiling</span>
+                <span class="tag">Two-Phase Flow</span>
+                <span class="tag">Heat Transfer</span>
+                <span class="tag">CHF</span>
+                <span class="tag">Pressure Drop</span>
+                <span class="tag">Thermal Management</span>
+                <span class="tag">Simulation</span>
+                <span class="tag">Experiments</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-label">
+            03 — Projects
+        </div>
+
+        <h2 class="section-title">
+            Engineering Projects
+        </h2>
+
+        <p class="section-description">
+            Selected academic and engineering work involving
+            simulation, thermal analysis, experimentation and
+            advanced manufacturing.
+        </p>
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>
+                    Optimized Heat Sink Design
+                </h3>
+
+                <p>
+                    Optimization of heat sink geometry through
+                    CFD-based thermal analysis and experimental
+                    evaluation.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">ANSYS Fluent</span>
+                    <span class="tag">CFD</span>
+                    <span class="tag">Heat Transfer</span>
+                    <span class="tag">SolidWorks</span>
+                    <span class="tag">Experiment</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>
+                    Corrugated Airfoil Heat Sink
+                </h3>
+
+                <p>
+                    Development and evaluation of modified airfoil
+                    and corrugated heat-sink geometries for improved
+                    thermal performance.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">Airfoil Geometry</span>
+                    <span class="tag">Corrugated Fins</span>
+                    <span class="tag">CFD</span>
+                    <span class="tag">Thermal Analysis</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>
+                    Experimental Heat Transfer Setup
+                </h3>
+
+                <p>
+                    Development of a compact wind-tunnel-style
+                    experimental setup for evaluating heat-sink
+                    thermal performance.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">K-Type Thermocouples</span>
+                    <span class="tag">DAQ</span>
+                    <span class="tag">Anemometer</span>
+                    <span class="tag">Pressure Measurement</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>
+                    Additive Manufacturing of Heat Sink
+                </h3>
+
+                <p>
+                    Investigation of metal additive manufacturing
+                    for producing optimized thermal components using
+                    Laser Powder Bed Fusion.
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">LPBF</span>
+                    <span class="tag">AlSi10Mg</span>
+                    <span class="tag">DfAM</span>
+                    <span class="tag">3D Printing</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section id="skills">
+
+    <div class="container">
+
+        <div class="section-label">
+            04 — Skills
+        </div>
+
+        <h2 class="section-title">
+            Technical Toolkit
+        </h2>
+
+        <p class="section-description">
+            Tools and engineering domains developed through
+            academic projects, coursework and research.
+        </p>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    CFD & Simulation
+                </h3>
+
+                <p>
+                    ANSYS Fluent · Computational Fluid Dynamics ·
+                    Thermal Analysis · Flow Analysis · Heat Transfer
+                    · Turbulence Modelling · Mesh Analysis
+                </p>
+
+            </div>
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    CAD & Engineering Design
+                </h3>
+
+                <p>
+                    SolidWorks · Autodesk Inventor · AutoCAD ·
+                    3D Modelling · Engineering Drawing ·
+                    Product Design
+                </p>
+
+            </div>
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    Thermal Engineering
+                </h3>
+
+                <p>
+                    Heat Transfer · Thermodynamics · Fluid Mechanics ·
+                    Convection · Thermal Management ·
+                    Boiling Heat Transfer
+                </p>
+
+            </div>
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    Manufacturing
+                </h3>
+
+                <p>
+                    Additive Manufacturing · Metal 3D Printing ·
+                    Laser Powder Bed Fusion · Design for Additive
+                    Manufacturing
+                </p>
+
+            </div>
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    Programming
+                </h3>
+
+                <p>
+                    Python · C · C++
+                </p>
+
+            </div>
+
+
+            <div class="skill-box reveal">
+
+                <h3>
+                    Experimental Engineering
+                </h3>
+
+                <p>
+                    Thermocouples · Data Acquisition ·
+                    Anemometry · Pressure Measurement ·
+                    Thermal Experiments
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESEARCH INTERESTS
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-label">
+            05 — Research Interests
+        </div>
+
+        <h2 class="section-title">
+            Where I want to go next.
+        </h2>
+
+        <p class="section-description">
+            Areas I am interested in exploring through research,
+            engineering and future industry opportunities.
+        </p>
+
+
+        <div class="interest-grid">
+
+            <div class="interest reveal">
+                Microchannel Flow Boiling
+            </div>
+
+            <div class="interest reveal">
+                Advanced Heat Transfer
+            </div>
+
+            <div class="interest reveal">
+                Thermal Management
+            </div>
+
+            <div class="interest reveal">
+                CFD & Computational Heat Transfer
+            </div>
+
+            <div class="interest reveal">
+                Aerospace Thermal Systems
+            </div>
+
+            <div class="interest reveal">
+                Spacecraft Thermal Management
+            </div>
+
+            <div class="interest reveal">
+                Propulsion Systems
+            </div>
+
+            <div class="interest reveal">
+                Battery Thermal Management
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section id="education">
+
+    <div class="container">
+
+        <div class="section-label">
+            06 — Education
+        </div>
+
+        <h2 class="section-title">
+            Academic Journey
+        </h2>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    2026 — Present
+                </div>
+
+                <h3>
+                    M.Tech — Thermal Engineering
+                </h3>
+
+                <p>
+                    Indian Institute of Technology Madras
+                </p>
+
+                <p>
+                    Current focus: Advanced Heat Transfer,
+                    Fluid Flow, Thermodynamics and
+                    Microchannel Flow Boiling research.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-year">
+                    2020 — 2024
+                </div>
+
+                <h3>
+                    B.Tech — Mechanical Engineering
+                </h3>
+
+                <p>
+                    College of Engineering Trivandrum
+                </p>
+
+                <p>
+                    APJ Abdul Kalam Technological University
+                </p>
+
+                <p>
+                    CGPA: 7.95 / 10
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESUME
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="contact-card reveal">
+
+            <div class="section-label">
+                Resume
+            </div>
+
+            <h2>
+                Interested in working together?
+            </h2>
+
+            <p>
+                I am interested in research, engineering and
+                industry opportunities related to thermal systems,
+                heat transfer, CFD, advanced cooling and aerospace
+                applications.
+            </p>
+
+            <div class="contact-links">
+
+                <!-- Replace "#" with your resume PDF later -->
+
+                <a href="#" class="btn btn-primary">
+                    Download Resume
+                </a>
+
+                <a href="https://www.linkedin.com/in/aswin-s-15b21b201"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact-card reveal">
+
+            <div class="section-label">
+                Contact
+            </div>
+
+            <h2>
+                Let's connect.
+            </h2>
+
+            <p>
+                For research collaborations, engineering
+                opportunities, technical discussions or
+                professional networking.
+            </p>
+
+            <div class="contact-links">
+
+                <a href="https://www.linkedin.com/in/aswin-s-15b21b201"
+                   target="_blank"
+                   class="btn btn-primary">
+                    LinkedIn
+                </a>
+
+                <a href="https://github.com/aswins-orbit"
+                   target="_blank"
+                   class="btn btn-secondary">
+                    GitHub
+                </a>
+
+                <!-- Add your email here later -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        © 2026 Aswin S · Thermal Engineering · IIT Madras
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* Mobile menu */
+
+    function toggleMenu() {
+
+        const menu = document.getElementById("navLinks");
+
+        menu.classList.toggle("show");
+
+    }
+
+
+    /* Close mobile menu after clicking */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            document.getElementById("navLinks")
+                .classList.remove("show");
+
+        });
+
+    });
+
+
+    /* Scroll reveal animation */
+
+    const observer = new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+    document.querySelectorAll(".reveal").forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+</script>
+
+
 </body>
 </html>
